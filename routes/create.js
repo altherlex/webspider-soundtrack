@@ -28,13 +28,16 @@ router.post('/', async function(req, res, next) {
   try {
     const list = await helper.GetLatestAlbums();
     list.forEach(async (album) => {
+
+      const info = await helper.GetAlbumDownloadInfo(album.post_url);
+
       const values = [
         uuidv4(),
         album.name,
-        album.link,
-        'muito_loko_capa_url.jpg',
+        album.post_url,
+        info.capa,
         'muito_loko_hotlink_url',
-        'muito_loko_download_url',
+        info.download_url,
         moment(new Date())
       ];
       await pool.query(state, values);

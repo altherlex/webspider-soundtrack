@@ -9,6 +9,8 @@ const createRouter = require('./routes/create');
 
 const app = express();
 
+app.set('json spaces', 40);
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -23,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', function(req, res) {
   res.redirect('/albums');
 });
+app.use('/albums/:format', indexRouter);
 app.use('/albums', indexRouter);
 app.use('/albums', createRouter);
 

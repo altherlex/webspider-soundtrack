@@ -11,8 +11,12 @@ const pool = new Pool({
 router.get('/', async function(req, res, next) {
   try {
     const { rows, rowCount } = await pool.query('SELECT * FROM albums ORDER BY id ASC');
-    // return res.status(200).send({ rows, total: rowCount });
-    return res.status(200).render('index', { rows, rowCount });
+
+    if (req.query.format==='json')
+      return res.status(200).json({ total: rowCount, rows });
+    else
+      return res.status(200).render('index', { rows, rowCount });
+
   } catch(error) {
     return res.status(400).send(error);
   }
