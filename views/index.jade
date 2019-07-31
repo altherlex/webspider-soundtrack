@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 List
+
+  div
+    form(action='/albums',method='post')
+      div
+        input(type='submit',value='Retrieve lastest albums',data-transition='fade', data-theme='c')
+
+  p total: #{rowCount}
+  p #{JSON.stringify(rows)}

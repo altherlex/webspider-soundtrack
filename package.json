@@ -1,20 +1,24 @@
 {
   "name": "webspider-soundtrack",
-  "version": "1.0.0",
-  "description": "",
-  "main": "server.js",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "async": "^3.1.0",
-    "await": "^0.2.6",
     "cheerio": "^1.0.0-rc.3",
-    "fs": "0.0.1-security",
-    "puppeteer": "^1.19.0",
-    "puppeteer-select": "^1.0.2",
-    "request": "^2.88.0"
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "dotenv": "^8.0.0",
+    "express": "~4.16.0",
+    "http-errors": "~1.6.2",
+    "jade": "~1.11.0",
+    "make-runnable": "^1.3.6",
+    "moment": "^2.24.0",
+    "morgan": "~1.9.0",
+    "pg": "^7.12.0",
+    "request": "^2.88.0",
+    "util": "^0.12.1",
+    "uuidv4": "^4.0.0"
   }
 }

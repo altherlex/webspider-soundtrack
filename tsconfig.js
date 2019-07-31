@@ -1,0 +1,11 @@
+module.exports = {
+  "compilerOptions": {
+    "noEmit": true,
+    "allowJs": true,
+    "checkJs": true,
+    "target": "ESNext"
+  },
+  "include": [
+    "lib"
+  ]
+}
