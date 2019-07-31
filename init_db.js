@@ -19,7 +19,7 @@ const createTables = () => {
     `CREATE TABLE IF NOT EXISTS
       albums(
         id UUID PRIMARY KEY,
-        name text NOT NULL,
+        name text NOT NULL UNIQUE,
         post_url text NOT NULL,
         capa text,
         hotlink_url text,

@@ -40,14 +40,21 @@ router.post('/', async function(req, res, next) {
         info.download_url,
         moment(new Date())
       ];
-      await pool.query(state, values);
+
+      //DOC: Valiade uniqueness
+      try {
+        await pool.query(state, values);
+      } catch(e) {
+
+      };
+      
     }); // forEach end
   } catch(e) {
     console.log('deu errro', e);
   }
 
 
-  res.status(201).redirect('/albums');
+  res.status(201).redirect('/');
 });
 
 module.exports = router;
