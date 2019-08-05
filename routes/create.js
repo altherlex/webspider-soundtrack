@@ -23,36 +23,43 @@ const pool = new Pool({
 
 /* GET users listing. */
 router.post('/', async function(req, res, next) {
-  // res.send('respond with a resource');
-
   try {
-    const list = await helper.GetLatestAlbums();
+    const list = await helper.getLatestAlbums();
+    // Asyncronous
     list.forEach(async (album) => {
-
-      const info = await helper.GetAlbumDownloadInfo(album.post_url);
+      var hotlink_url = '';
+      try {
+        hotlink_url = await helper.getHotlink(album.post_url);
+      } catch(e){
+        console.log('erro ocorrido:', e);
+      }
 
       const values = [
         uuidv4(),
         album.name,
         album.post_url,
         info.capa,
-        'muito_loko_hotlink_url',
+        hotlink_url,
         info.download_url,
         moment(new Date())
       ];
 
-      //DOC: Valiade uniqueness
+      //DOC: Reject duplicates
       try {
         await pool.query(state, values);
       } catch(e) {
 
       };
-      
     }); // forEach end
+
+    // // Syncronous
+    // list.forEach( (album) => {
+    //   const info = helper.getAlbumInfo(album.post_url);
+    // }); // forEach end
+
   } catch(e) {
     console.log('deu errro', e);
   }
-
 
   res.status(201).redirect('/');
 });

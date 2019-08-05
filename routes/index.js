@@ -10,7 +10,7 @@ const pool = new Pool({
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   try {
-    const { rows, rowCount } = await pool.query('SELECT * FROM albums ORDER BY id ASC');
+    const { rows, rowCount } = await pool.query('SELECT * FROM albums ORDER BY created_date DESC');
 
     if (req.query.format==='json')
       return res.status(200).json({ total: rowCount, rows });
