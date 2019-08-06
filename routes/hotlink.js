@@ -8,7 +8,8 @@ router.post('/', async function(req, res, next) {
     // return res.status(201).redirect('/albums?format=json');
     return res.status(200).json({ total: result.length, rows: result });
   } catch(error) {
-    return res.status(400).send(error);
+    console.log('Error', error);
+    return res.status(400).json({ error: 'Error'});
   }
 });
 

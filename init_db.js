@@ -24,6 +24,8 @@ const createTables = () => {
         capa text,
         hotlink_url text,
         download_url text,
+        final_url_generated text,
+        downloaded BOOLEAN DEFAULT FALSE,
         created_date TIMESTAMP,
         modified_date TIMESTAMP
       )`;
