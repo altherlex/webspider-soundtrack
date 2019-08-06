@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router();
 const {helper} = require('../lib/helper');
 
-router.post('/', function(req, res, next) {
-  // try {
-    const result = helper.updateHotlink();
-    return res.status(200).json(result);
-  // } catch(error) {
-    // return res.status(400).send(error);
-  // }
+router.post('/', async function(req, res, next) {
+  try {
+    const result = await helper.updateInfo();
+    // return res.status(201).redirect('/albums?format=json');
+    return res.status(200).json({ total: result.length, rows: result });
+  } catch(error) {
+    return res.status(400).send(error);
+  }
 });
 
 module.exports = router;

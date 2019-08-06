@@ -4,11 +4,10 @@ const state = `INSERT INTO
     name,
     post_url,
     capa,
-    hotlink_url,
     download_url,
     created_date
   )
-  VALUES ($1, $2, $3, $4, $5, $6, $7)`;
+  VALUES ($1, $2, $3, $4, $5, $6)`;
 const express = require('express');
 const router = express.Router();
 const moment = require('moment');
@@ -25,43 +24,28 @@ const pool = new Pool({
 router.post('/', async function(req, res, next) {
   try {
     const list = await helper.getLatestAlbums();
+
     // Asyncronous
     list.forEach(async (album) => {
-      var hotlink_url = '';
-      try {
-        hotlink_url = await helper.getHotlink(album.post_url);
-      } catch(e){
-        console.log('erro ocorrido:', e);
-      }
-
+      const info = await helper.getAlbumInfo(album.post_url);
       const values = [
         uuidv4(),
         album.name,
         album.post_url,
         info.capa,
-        hotlink_url,
         info.download_url,
         moment(new Date())
       ];
-
       //DOC: Reject duplicates
       try {
         await pool.query(state, values);
       } catch(e) {
-
       };
     }); // forEach end
-
-    // // Syncronous
-    // list.forEach( (album) => {
-    //   const info = helper.getAlbumInfo(album.post_url);
-    // }); // forEach end
-
+    return res.status(201).redirect('/albums?format=json');
   } catch(e) {
     console.log('deu errro', e);
   }
-
-  res.status(201).redirect('/');
 });
 
 module.exports = router;
