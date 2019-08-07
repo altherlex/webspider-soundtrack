@@ -14,8 +14,8 @@ pool.on('connect', () => {
 const addColumns = () => {
   const queryText =
     `ALTER TABLE albums
-    ADD COLUMN final_url_generated TEXT;
-    ADD COLUMN downloaded BOOLEAN DEFAULT FALSE
+    ADD COLUMN final_url_generated TEXT,
+    ADD COLUMN downloaded BOOLEAN DEFAULT FALSE,
     ADD COLUMN path VARCHAR(258);`;
 
   pool.query(queryText)
