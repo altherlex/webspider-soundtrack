@@ -11,6 +11,24 @@ pool.on('connect', () => {
   console.log('connected to the db');
 });
 
+const addColumns = () => {
+  const queryText =
+    `ALTER TABLE albums
+    ADD COLUMN final_url_generated TEXT;
+    ADD COLUMN downloaded BOOLEAN DEFAULT FALSE
+    ADD COLUMN path VARCHAR(258);`;
+
+  pool.query(queryText)
+    .then((res) => {
+      console.log(res);
+      pool.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      pool.end();
+    });
+};
+
 /**
  * Create Tables
  */
@@ -64,7 +82,8 @@ pool.on('remove', () => {
 
 module.exports = {
   createTables,
-  dropTables
+  dropTables,
+  addColumns
 };
 
 require('make-runnable');
