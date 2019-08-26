@@ -1,4 +1,4 @@
-const allowedColumn = ['id', 'name', 'post_url', 'capa', 'hotlink_url', 'created_date', 'modified_date', 'final_url_generated', 'downloaded', 'path']
+const allowedColumn = ['id', 'name', 'post_url', 'capa', 'hotlink_url', 'download_url', 'created_date', 'modified_date', 'final_url_generated', 'downloaded', 'path']
 const express = require('express');
 const router = express.Router();
 const { Pool } = require('pg');
@@ -16,7 +16,8 @@ router.get('/', async function(req, res, next) {
   try {
     const objQuery = {
       type: 'select',
-      table: 'albums'
+      table: 'albums',
+      sort: {created_date: -1}
     }; 
     // DOC: paginate
     const paginationParams = filter.parse(req.query).paginate;
