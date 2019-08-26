@@ -44,6 +44,7 @@ router.get('/', async function(req, res, next) {
 
     if (req.query.fields) {
       const select = qs.parse('fields='+req.query.fields, { comma: true });
+      console.log('select: ', select);
       const fields = select.fields.filter(col => allowedColumn.includes(col) );
       if (fields.lenght!=0)
         objQuery.fields = fields;
