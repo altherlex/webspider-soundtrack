@@ -23,12 +23,14 @@ LOGIN_PASS=password
 
 ## Docker
 
-`$ git clone https://github.com/altherlex/webspider-soundtrack.git`
-`$ cd webspider-soundtrack`
-`$ docker-compose up`
-`$ docker exec -it webspider-soundtrack_postgres_1 psql -U postgres -c "create database webspidersoundtrack"`
-`$ docker exec -it webspider-soundtrack_app_1 node /usr/src/app/init_db createTables`
-`$ docker exec -it webspider-soundtrack_app_1 node /usr/src/app/init_db addColumns`
+```
+$ git clone https://github.com/altherlex/webspider-soundtrack.git
+$ cd webspider-soundtrack
+$ docker-compose up
+$ docker exec -it webspider-soundtrack_postgres_1 psql -U postgres -c "create database webspidersoundtrack"
+$ docker exec -it webspider-soundtrack_app_1 node /usr/src/app/init_db createTables
+$ docker exec -it webspider-soundtrack_app_1 node /usr/src/app/init_db addColumns
+```
 
 * Access on http://localhost:5000
 
