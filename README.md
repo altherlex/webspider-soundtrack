@@ -30,6 +30,8 @@ LOGIN_PASS=password
 `$ docker exec -it webspider-soundtrack_app_1 node /usr/src/app/init_db createTables`
 `$ docker exec -it webspider-soundtrack_app_1 node /usr/src/app/init_db addColumns`
 
+* Access on http://localhost:5000
+
 ## TODO
 
 1. Implement ORM: [Sequelize](https://sequelize.org/)
