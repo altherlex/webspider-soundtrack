@@ -21,6 +21,12 @@ LOGIN_PASS=password
 8. run `$ node init_db addColumns`
 9. `$ npm start` check http://localhost:3000
 
+## Docker
+
+`$ docker-compose up`
+`$ docker exec -it webspider-soundtrack_postgres_1 psql -U postgres -c "create database webspidersoundtrack"`
+`$ docker exec -it webspider-soundtrack_app_1 node /usr/src/app/init_db createTables`
+
 ## TODO
 
 1. Implement ORM: [Sequelize](https://sequelize.org/)

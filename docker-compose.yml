@@ -1,0 +1,34 @@
+version: '3'
+services:
+  app:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - "5000:8080"
+    environment:
+      DATABASE_URL: postgres://postgres:admin@postgres:5432/webspidersoundtrack
+      PORT: 8080
+      NODE_ENV: development
+
+  postgres:
+    image: postgres:11.3
+    ports:
+      - "35432:5432"
+    # volumes:
+    #   - ./init-db.js:/usr/src/app/init-db.js
+    # command: 
+      # - psql -U postgres -c "create database webspidersoundtrack"
+      # - /usr/local/bin/init.sh && exec createdb webspider-soundtrack
+      # RUN chmod +x /fixtures/setup.sh
+      # - node /usr/src/app/init_db createTables
+      # - node /usr/src/app/init_db addColumns
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: webspider-soundtrack
+    volumes:
+      - database:/var/lib/postgresql/data
+
+volumes:
+  database:
