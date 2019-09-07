@@ -17,16 +17,10 @@ services:
       - "35432:5432"
     # volumes:
     #   - ./init-db.js:/usr/src/app/init-db.js
-    # command: 
-      # - psql -U postgres -c "create database webspidersoundtrack"
-      # - /usr/local/bin/init.sh && exec createdb webspider-soundtrack
-      # RUN chmod +x /fixtures/setup.sh
-      # - node /usr/src/app/init_db createTables
-      # - node /usr/src/app/init_db addColumns
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: webspider-soundtrack
+      POSTGRES_DB: webspidersoundtrack
     volumes:
       - database:/var/lib/postgresql/data
 
