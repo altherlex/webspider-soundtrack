@@ -1,4 +1,7 @@
 FROM node:10.15
+# FROM heroku/nodejs:10.15
+#FROM heroku/heroku:18
+#$ heroku stack:set heroku-18
 
 RUN apt-get update && apt-get install -y wget --no-install-recommends \
   && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
