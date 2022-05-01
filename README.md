@@ -1,5 +1,9 @@
 # webspider-soundtrack
 
+Nodejs webapp and webcrawler that reads http://download-soundtracks.com/dmca-policy/ and download in local the latest albuns uploaded.
+
+https://webspider-soundtrack.herokuapp.com
+
 ## How to run
 1. Install postgree and execute `$ createdb webspider-soundtrack`
 2. Create a db user 
@@ -37,3 +41,5 @@ $ docker exec -it webspider-soundtrack_app_1 node /usr/src/app/init_db addColumn
 ## TODO
 
 1. Implement ORM: [Sequelize](https://sequelize.org/)
+2. Download and make available somewhere on the cloud.
+3. Heroku has problem running `puppeteer`
