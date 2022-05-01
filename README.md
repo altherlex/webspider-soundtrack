@@ -1,6 +1,6 @@
 # webspider-soundtrack 🕷♫
 
-Nodejs webapp and webcrawler that reads http://download-soundtracks.com/dmca-policy/ and download in local the latest albuns uploaded.
+Nodejs webapp and webcrawler that reads http://download-soundtracks.com/dmca-policy/ and download in local the latest albums.
 
 https://webspider-soundtrack.herokuapp.com
 
